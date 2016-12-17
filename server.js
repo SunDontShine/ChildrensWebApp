@@ -7,27 +7,37 @@ var views="/Views/"
 var vc = require('./Controllers/viewController.js');
 
 app.get('/', function(req,res){
-    res.redirect(301,'/welcomePage')
+    res.redirect(302,'/home')
 })
 //TODO: Set generic getter, regexp for path, sends to corresponding file if exists
 //contains images
-//contains views/styles
 //contains views/*.html
 
-app.get('/welcomePage',function(req,res){
+//request including basic 'home template' layout
+app.get(/\/home/,function(req,res){
 
      var reqPath = url.parse(req.url).pathname;
     console.log(reqPath);
-    
-    fs.readFile(__dirname+views+"header.html",function(err,data){
-        var msg = data.toString();
-        msg = msg.replace('{{title}}','Welcome - Smart Kids');
-        res.setHeader("Content-Type","text/html");
-        res.end(msg);
+    var reqFile = path.basename(reqPath);
+    fs.readdir(__dirname+views,'utf8',function(err,data){
+        if(data.includes(reqFile+'.html')){
+                vc.loadToolbarPage(res,reqPath);
+        }else{
+            res.writeHead(404,"Path not found ");
+            res.write("<h2>Error 404: Page Not Found :( <h2>" + reqPath);
+            res.end();
+        }
     })
+    
+});
 
+app.get(/\/main.js/,function(req,res){
+    var reqPath = url.parse(req.url).pathname;
+    res.sendFile(__dirname+'/Model/main.js');
 })
-
+app.get(/\/Views\/games.html/,function(req,res){
+    res.sendFile(__dirname+'/Views/games.html');
+})
 app.get(/\/Views\/styles\//,function(req,res){
     var reqPath = url.parse(req.url).pathname;
     var reqFile = path.basename(reqPath); // the requested file
@@ -39,6 +49,9 @@ app.get(/\/Views\/styles\//,function(req,res){
     });
 });
 
-app.listen(3000, function(){
-    console.log("Example App Listening on port 3000!");
+app.listen(3002, function(){
+    console.log("Example App Listening on port 3002!");
 });
+
+
+
