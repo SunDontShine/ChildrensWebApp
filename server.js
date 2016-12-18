@@ -7,7 +7,7 @@ var views="/Views/"
 var vc = require('./Controllers/viewController.js');
 
 app.get('/', function(req,res){
-    res.redirect(302,'/home')
+    res.redirect(302,'/main/login')
 })
 //TODO: Set generic getter, regexp for path, sends to corresponding file if exists
 //contains images
