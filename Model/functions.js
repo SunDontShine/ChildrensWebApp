@@ -5,6 +5,7 @@ function ajaxCall(id,fileName) {
      document.getElementById(id).innerHTML = this.responseText;
     }
   };
-  req.open("GET", '../Views/'+fileName+'.html', true);
+  req.open("GET", '../../Views/subj/'+fileName+'.html', true);
   req.send();
 }
+
