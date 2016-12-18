@@ -32,14 +32,16 @@ app.get(/\/main/,function(req,res){
 });
 
 app.get(/\/Model\/functions.js/,function(req,res){
-    var reqPath = url.parse(req.url).pathname;
     res.sendFile(__dirname+'/Model/functions.js');
 })
-app.get(/\/Views\/games.html/,function(req,res){
-    res.sendFile(__dirname+'/Views/games.html');
+app.get(/\/Views\/subj\//,function(req,res){
+    var reqPath = url.parse(req.url).pathname;
+
+            res.sendFile(__dirname+reqPath);
 })
 app.get(/\/Views\/styles\//,function(req,res){
     var reqPath = url.parse(req.url).pathname;
+    console.log(reqPath);
     var reqFile = path.basename(reqPath); // the requested file
     
     fs.readdir(__dirname+views+'styles','utf8',function(err,data){
