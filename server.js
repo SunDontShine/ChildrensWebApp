@@ -69,6 +69,7 @@ app.post(/\/main\//,function(req,res){
         var postData = qs.parse(body);
         console.log(postData);
         //prc.validateUser();
+        prc.handlePostRequest(req,res,reqPath);
     })
     
 });
