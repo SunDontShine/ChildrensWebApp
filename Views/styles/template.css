@@ -6,9 +6,7 @@
     margin-bottom: 0;
     background-color: yellow;
 }
-#main{
+.row-buffer{
+    margin-top: 15px;
 }
 
-
-#footer{
-}
