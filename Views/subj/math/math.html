@@ -11,20 +11,23 @@
                     </div>
                 </div>
                 <div class='row'>
+                    <form action='gameproblems' method="POST">
                     <div class='col-md-8'>
                         <div class='row'>
-                    <div class='col-md-3'>
-                                <button type='button' class='btn btn-danger btn-lg btn-block'>Add</button>
-                    </div>
-                    <div class='col-md-3'>
-                                <button type='button' class='btn btn-danger btn-lg btn-block'>Subtract</button>
-                    </div>
-                    <div class='col-md-3'>
-                                <button type='button' class='btn btn-danger btn-lg btn-block'>Divide</button>
-                    </div>
-                    <div class='col-md-3'>
-                                <button type='button' class='btn btn-danger btn-lg btn-block'>Multiply</button>
-                    </div>
+                                <div class='col-md-6'>
+                                            <button type='submit' name='submit' value='add' class='btn btn-danger btn-lg btn-block'>Add</button>
+                                </div>
+                                <div class='col-md-6'>
+                                            <button type='submit' name='submit' value='subtract' class='btn btn-danger btn-lg btn-block'>Subtract</button>
+                                </div>
+                        </div>
+                        <div class='row'>
+                                <div class='col-md-6'>
+                                            <button type='submit' name='submit' value='divide' class='btn btn-danger btn-lg btn-block'>Divide</button>
+                                </div>
+                                <div class='col-md-6'>
+                                            <button type='submit' name='submit' value='multiply' class='btn btn-danger btn-lg btn-block'>Multiply</button>
+                                </div>
                             </div>
                     
                     </div>
@@ -37,6 +40,7 @@
                         <input type='radio' name='timed' value='no' checked>No   
                         </center></div>
                     </div>
+                    </form>
                 </div>
     </div>
     <div class='col-md-6'>
