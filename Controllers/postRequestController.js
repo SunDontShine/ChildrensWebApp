@@ -3,11 +3,12 @@ var path = require('path')
 
 module.exports = {
     
-    handlePostRequest : function(req,res,reqPath){
+    handlePostRequest : function(req,res,post,Data,reqPath){
+        
         if(reqPath == 'createAccount'){
-            
-        }else if('validateAccount'){
-            
+            console.log("create account request");
+        }else if(reqPath =='validateAccount'){
+            console.log("validate account request");
         }else{
             //request not found
         }
