@@ -6,7 +6,7 @@ module.exports = {
  getProblems : function(res,core,subj,count,reqgrade,reqdiff){
         mongodb.connect("mongodb://localhost:27017/ChildrensWebApp",function(err,db){
             if(err){return console.dir(err);}
-                console.log("CORE : " +core + "\nSUBJECT : " +subj + " \nGET request for \nCOUNT : " + count + " problems from database");
+               // console.log("CORE : " +core + "\nSUBJECT : " +subj + " \nGET request for \nCOUNT : " + count + " problems from database");
             var topic = "";
             switch(subj){
                 case '+':
@@ -35,26 +35,25 @@ module.exports = {
 }
 
 function sendQuizPage(res,core,topic,items){
-    console.log("MADEIT");
 fs.readFile("./Views/subjectQuiz.html",function(err,data){
         var file="";
         file+=data;
         file = file.replace('{{coreTopic}}', core);
         file = file.replace('{{topic}}', topic);
-        var table="<form action='gradeProblems' method='GET'>\n";
-    //need to randomize values in radio buttons
+        var table="<form action='gradeProblems' method='GET'>\n<h3>Answer the questions below, and press submit to view your results</h3>\n";
     items.forEach(function(question,pos){
+        var options = question.incorrect;
+        options.push(question.solution);    
         table+=`${question.operands[0]} ${question.operation} ${question.operands[1]}= ?<br>`;
         
-    for(var i =0; i < 4; i++){
-        var incQuestion = question.incorrect[i];
-        table+=`<input type='radio' name='${pos}' value='${incQuestion}'>${incQuestion}<br>`;
+    for(var i =0; i < 5; i++){
+        var option = options.splice(Math.floor((Math.random() * (options.length))),1);
+        table+=`<input type='radio' name='${pos}' value='${option}'>${option}<br>`;
     }
-        table+=`<input type='radio' name='${pos}',value='${question.solution}'>${question.solution} <br>`;
     });
         table+="<button type='submit'>Submit</button</form>"
         file = file.replace('{{body}}',table);
-    res.end(file);
+        res.end(file);
         
         
     })
