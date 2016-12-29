@@ -13,8 +13,3 @@
   <li>Bootstrap</li>
    <li>Framework Rendering Engine: TBD</li>
 </ul>
-
-
-Front-end:
-Bootstrap
-Framework Rendering Engine: TBD
