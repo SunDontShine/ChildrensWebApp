@@ -6,7 +6,7 @@ Click the link to view my progress!<a href='http://smartkidsapp.us/'>&nbsp;Smart
 <h3>Server-Side:</h3><br>
 <ul><li>Node JS</li>
    <li>Utilizes minor Express framework packages</li>
-</ul><li>Mongo Database </li>
+   <li>Mongo Database </li></ul>
 
 
 <h3>Front-End:</h3><br>
