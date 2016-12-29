@@ -4,7 +4,6 @@
 <ul>
   <li>Node JS</li>
    <li>Utilizes minor Express framework packages</li>
-  <li>Express</li>
 </ul>
 
 
