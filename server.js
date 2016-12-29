@@ -6,7 +6,6 @@ var url = require('url')
 var views="/Views/"
 var vc = require('./Controllers/viewController.js');
 var prc = require('./Controllers/postRequestController.js');
-var bparser = require('body-parser');
 var qs = require('querystring');
 app.get('/', function(req,res){
     res.redirect(302,'/main/login')
@@ -17,19 +16,20 @@ app.get('/', function(req,res){
 
 //request including basic 'home template' layout
 app.get(/\/main/,function(req,res){
-
+    
      var reqPath = url.parse(req.url).pathname;
-    //console.log(reqPath);
     var reqFile = path.basename(reqPath);
-    fs.readdir(__dirname+views,'utf8',function(err,data){
-        if(data.includes(reqFile+'.html')){
-                vc.loadToolbarPage(res,reqPath);
-        }else{
-            res.writeHead(404,"Path not found ");
-            res.write("<h2>Error 404: Page Not Found :( <h2>" + reqPath);
-            res.end();
-        }
-    })
+
+    
+        fs.readdir(__dirname+views,'utf8',function(err,data){
+            if(data.includes(reqFile+'.html')){
+                    vc.loadPage(req,res,reqPath);              
+            }else{
+                res.writeHead(404,"Path not found ");
+                res.write("<h2>Error 404: Page Not Found :( <h2>" + reqPath);
+                res.end();
+            }
+        })
     
 });
 
@@ -43,7 +43,6 @@ app.get(/\/Views\/subj\//,function(req,res){
 })
 app.get(/\/Views\/styles\//,function(req,res){
     var reqPath = url.parse(req.url).pathname;
-    //console.log(reqPath);
     var reqFile = path.basename(reqPath); // the requested file
     
     fs.readdir(__dirname+views+'styles','utf8',function(err,data){
@@ -59,7 +58,7 @@ app.listen(3002, function(){
 
 app.post(/\/main\//,function(req,res){
     var reqPath = path.basename(req.path);
-    console.log(reqPath);
+    console.log("POST request path : " + reqPath);
     
     var body="";
     req.on('data',function(data){
@@ -67,9 +66,7 @@ app.post(/\/main\//,function(req,res){
     });
     req.on('end',function(){
         var postData = qs.parse(body);
-        console.log(postData);
-        //prc.validateUser();
-        prc.handlePostRequest(req,res,reqPath);
+        prc.handlePostRequest(req,res,postData,reqPath);
     })
     
 });
