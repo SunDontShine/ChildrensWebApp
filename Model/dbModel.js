@@ -69,7 +69,7 @@ function sendAnswerPage(res,userSubmission, objIds){
                     var dbObjId = dbObj._id;
                     var dbSolution = dbObj.solution;
                         if(dbObjId == usrObjId){
-                            body+=`${dbObj.operands[0]} ${dbObj.operation} ${dbObj.operands[1]} = ? <br>You selected ${usrAnswer}`
+                            body+=`${dbObj.operands[0]} ${dbObj.operation} ${dbObj.operands[1]} = ? <br>You selected : ${usrAnswer}`
                             if(dbSolution == usrAnswer){
                                 body+=`\t<span style="background-color:#0dd828">Correct</span><br><br>`
                                 totalCorrect++;
