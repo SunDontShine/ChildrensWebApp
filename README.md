@@ -1,5 +1,5 @@
 # ChildrensWebApp
-Click the link to view my progress!<a href='smartkidsapp.us'>$nbps;Smart Kids</a>
+Click the link to view my progress!<a href='smartkidsapp.us'>&nbsp;Smart Kids</a>
 <h1>About</h1>
 <p>This Childrens Web Applications is hosted on a Digital Ocean Ubuntu 16.4 linux server. The web applications is written in Node JS and utilizes a Mongo Database.</p>
 
