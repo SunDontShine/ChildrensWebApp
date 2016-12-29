@@ -1,3 +1,10 @@
 # ChildrensWebApp
 
-<h1>ChildrensWebApp</h1>
+Server-Side:
+Node JS
+Utilizes minor Express framework packages
+Mongo Database
+
+Front-end:
+Bootstrap
+Framework Rendering Engine: TBD
