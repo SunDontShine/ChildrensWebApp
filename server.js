@@ -6,7 +6,6 @@ var url = require('url')
 var views="/Views/"
 var vc = require('./Controllers/viewController.js');
 var prc = require('./Controllers/postRequestController.js');
-var bparser = require('body-parser');
 var qs = require('querystring');
 app.get('/', function(req,res){
     res.redirect(302,'/main/login')
@@ -19,7 +18,6 @@ app.get('/', function(req,res){
 app.get(/\/main/,function(req,res){
     
      var reqPath = url.parse(req.url).pathname;
-    //console.log(reqPath);
     var reqFile = path.basename(reqPath);
 
     

@@ -1,7 +1,6 @@
 var fs = require('fs')
 var path = require('path')
 var dbModel = require('../Model/dbModel.js');
-
 module.exports = {
     
  loadPage: function(req,res, reqPath){
@@ -18,6 +17,10 @@ module.exports = {
             var core = (/[+-\/X].test(subj)/?  "Math": "English"); //Math if contains operators
             dbModel.getProblems(res,core,subj,count,grade,difficulty);
                     
+       }else if(pageTitle == 'gradeProblems'){
+         var query = req.query;
+           dbModel.gradeQuestions(query,res);
+
        }else{ fs.readFile("./Views/"+pageTitle+".html",'utf8',function(err,data){//body
             msg += data;
                 
