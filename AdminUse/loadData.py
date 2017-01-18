@@ -11,8 +11,9 @@ collection = db['elementaryMath'] #add_problems collection
 #//operation,grade,difficulty,operands,incorrect,solution
 
 #+ 2 1 [3,7] [4,11,8,14] 10
+fileName = input("Enter the name of the file to enter it's data to the  elementaryMath db : ")
 
-file = open('data.txt','r')
+file = open(fileName,'r')
 for line in file:
     dataArray = line.split()
     collection.insert_one(
